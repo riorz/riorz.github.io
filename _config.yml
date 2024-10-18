@@ -103,7 +103,7 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
 
 category_archive:
   type: liquid
@@ -114,3 +114,6 @@ tag_archive:
 
 atom_feed:
   hide: true
+
+contact_form: 1FAIpQLSfuJVtvUUpO81iHev-IOg4XGp-XAOAMjBgpVB4Eg9oCaSc38A
+comment_sheet: 11V0Pbaz8IAtqiaNGyedv3dLchZq1giTN082mQbMJU-E

@@ -1,0 +1,28 @@
+---
+title: comments
+permalink: /comments
+---
+<div id="comments">
+</div>
+<script>
+    const csvUrl = `https://docs.google.com/spreadsheets/d/{{ site.comment_sheet }}/gviz/tq?tqx=out:csv&sheet=comments`;
+
+    fetch(csvUrl)
+        .then(res=>res.text())
+        .then(csvText=>{
+            const rows = csvText.trim().split('\n').map(row =>
+                row.split(',').map(item => item.slice(1,-1))
+            ).slice(1);
+            const commentsContainer = document.getElementById('comments');
+            rows.forEach(row => {
+                const date = row[0];
+                const name = row[1];
+                const email = row[2];
+                const comment = row[3];
+                const commentDiv = document.createElement('div');
+                commentDiv.innerHTML = `<strong><a href="mailto:${email}">${name}</a></strong> <em>${date}</em>: <p>${comment}</p>`;
+                commentsContainer.appendChild(commentDiv);
+            });
+        })
+        .catch(err => console.error('Error fetching data:' + err));
+</script>
